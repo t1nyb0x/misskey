@@ -19,6 +19,8 @@ const keys = [
 	'l-sushi',
 	'l-u0',
 	'd-dark',
+	'd-kaho',
+	'd-kozue',
 	'd-persimmon',
 	'd-astro',
 	'd-future',
