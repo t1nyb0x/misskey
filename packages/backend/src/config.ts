@@ -316,11 +316,8 @@ export function loadConfig(): Config {
 		perUserNotificationsMaxCount: config.perUserNotificationsMaxCount ?? 500,
 		deactivateAntennaThreshold: config.deactivateAntennaThreshold ?? (1000 * 60 * 60 * 24 * 7),
 		pidFile: config.pidFile,
-<<<<<<< HEAD
 		misskeyBlockMentionsFromUnfamiliarRemoteUsers: config.misskeyBlockMentionsFromUnfamiliarRemoteUsers ?? false,
-=======
 		logging: config.logging,
->>>>>>> master
 	};
 }
 
