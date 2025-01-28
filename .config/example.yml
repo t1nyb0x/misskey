@@ -77,7 +77,7 @@
 #───┘ URL └─────────────────────────────────────────────────────
 
 # Final accessible URL seen by a user.
-url: https://example.tld/
+url: https://lovelive-misskey.t1nyb0x.cloud/
 
 # ONCE YOU HAVE STARTED THE INSTANCE, DO NOT CHANGE THE
 # URL SETTINGS AFTER THAT!
@@ -109,15 +109,15 @@ port: 3000
 #───┘ PostgreSQL configuration └────────────────────────────────
 
 db:
-  host: localhost
+  host: db
   port: 5432
 
   # Database name
   db: misskey
 
   # Auth
-  user: example-misskey-user
-  pass: example-misskey-pass
+  user: misskey_db
+  pass: HGexRa$3LNS/
 
   # Whether disable Caching queries
   #disableCache: true
@@ -147,7 +147,7 @@ dbReplications: false
 #───┘ Redis configuration └─────────────────────────────────────
 
 redis:
-  host: localhost
+  host: redis
   port: 6379
   #family: 0  # 0=Both, 4=IPv4, 6=IPv6
   #pass: example-pass
@@ -196,9 +196,27 @@ redis:
 #  # You can specify more ioredis options...
 #  #username: example-username
 
-#   ┌───────────────────────────┐
-#───┘ MeiliSearch configuration └─────────────────────────────
+#   ┌───────────────────────────────┐
+#───┘ Fulltext search configuration └─────────────────────────────
 
+# These are the setting items for the full-text search provider.
+fulltextSearch:
+  # You can select the ID generation method.
+  # - sqlLike (default)
+  #   Use SQL-like search.
+  #   This is a standard feature of PostgreSQL, so no special extensions are required.
+  # - sqlPgroonga
+  #   Use pgroonga.
+  #   You need to install pgroonga and configure it as a PostgreSQL extension.
+  #   In addition to the above, you need to create a pgroonga index on the text column of the note table.
+  #   see: https://pgroonga.github.io/tutorial/
+  # - meilisearch
+  #   Use Meilisearch.
+  #   You need to install Meilisearch and configure.
+  provider: sqlLike
+
+# For Meilisearch settings.
+# If you select "meilisearch" for "fulltextSearch.provider", it must be set.
 # You can set scope to local (default value) or global
 # (include notes from remote).
 
@@ -325,3 +343,13 @@ signToActivityPubGet: true
 # ローカル宛てのメンション、リプライ、引用ノートの発行元が、ローカルユーザーにフォローされていない場合に投稿を拒否するかどうか
 # default: false
 # misskeyBlockMentionsFromUnfamiliarRemoteUsers: false
+
+# Log settings
+# logging:
+#   sql:
+#     # Outputs query parameters during SQL execution to the log.
+#     # default: false
+#     enableQueryParamLogging: false
+#     # Disable query truncation. If set to true, the full text of the query will be output to the log.
+#     # default: false
+#     disableQueryTruncation: false
