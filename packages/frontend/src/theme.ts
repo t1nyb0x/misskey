@@ -40,31 +40,6 @@ class ThemeManager extends EventEmitter<ThemeManagerEvents> {
 	private _currentCompiledTheme: CompiledTheme | null = null;
 	get currentCompiledTheme() { return this._currentCompiledTheme; }
 
-<<<<<<< HEAD
-		'd-dark',
-		'd-kaho',
-		'd-kaho-v2',
-		'd-sayaka',
-		'd-rurino',
-		'd-kozue',
-		'd-kozue-v2',
-		'd-tuduri',
-		'd-megumi',
-		'd-ginko',
-		'd-kosuzu',
-		'd-hime',
-		'd-persimmon',
-		'd-astro',
-		'd-future',
-		'd-botanical',
-		'd-green-lime',
-		'd-green-orange',
-		'd-cherry',
-		'd-ice',
-		'd-u0',
-	].map(name => import(`@@/themes/${name}.json5`).then(({ default: _default }): Theme => _default)),
-);
-=======
 	/** プレビュー中かどうか */
 	private _isPreviewMode = false;
 	get isPreviewMode() { return this._isPreviewMode; }
@@ -74,7 +49,6 @@ class ThemeManager extends EventEmitter<ThemeManagerEvents> {
 			this.emit('previewStateChanged', value);
 		}
 	}
->>>>>>> master
 
 	constructor() {
 		super();
